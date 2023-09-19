@@ -10,12 +10,12 @@ import vn.dtc.project.grabfood.R
 import vn.dtc.project.grabfood.adapters.HomeViewpagerAdapter
 import vn.dtc.project.grabfood.databinding.FragmentHomeBinding
 import vn.dtc.project.grabfood.fragments.categories.MainCategoryFragment
-import vn.dtc.project.grabfood.fragments.categories.cate_1_Fragment
-import vn.dtc.project.grabfood.fragments.categories.cate_2_Fragment
-import vn.dtc.project.grabfood.fragments.categories.cate_3_Fragment
-import vn.dtc.project.grabfood.fragments.categories.cate_4_Fragment
-import vn.dtc.project.grabfood.fragments.categories.cate_5_Fragment
-import vn.dtc.project.grabfood.fragments.categories.cate_6_Fragment
+import vn.dtc.project.grabfood.fragments.categories.Meat_Fragment
+import vn.dtc.project.grabfood.fragments.categories.Sea_Food_Fragment
+import vn.dtc.project.grabfood.fragments.categories.Vegetables_Fragment
+import vn.dtc.project.grabfood.fragments.categories.Desert_Fragment
+import vn.dtc.project.grabfood.fragments.categories.Drink_Fragment
+import vn.dtc.project.grabfood.fragments.categories.Other_Food_Fragment
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
@@ -34,12 +34,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val categoriesFragments = arrayListOf(
             MainCategoryFragment(),
-            cate_1_Fragment(),
-            cate_2_Fragment(),
-            cate_3_Fragment(),
-            cate_4_Fragment(),
-            cate_5_Fragment(),
-            cate_6_Fragment()
+            Meat_Fragment(),
+            Sea_Food_Fragment(),
+            Vegetables_Fragment(),
+            Desert_Fragment(),
+            Drink_Fragment(),
+            Other_Food_Fragment()
         )
 
         binding.viewpagerHome.isUserInputEnabled = false
@@ -49,13 +49,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.viewpagerHome.adapter = viewPager2Adapter
         TabLayoutMediator(binding.tabLayout, binding.viewpagerHome) { tab, position ->
             when (position) {
-                0 -> tab.text = "Main"
-                1 -> tab.text = "C1"
-                2 -> tab.text = "C2"
-                3 -> tab.text = "C3"
-                4 -> tab.text = "C4"
-                5 -> tab.text = "C5"
-                6 -> tab.text = "C6"
+                0 -> tab.text = "Home"
+                1 -> tab.text = "Meat"
+                2 -> tab.text = "Sea Food"
+                3 -> tab.text = "Vegetables"
+                4 -> tab.text = "Dessert"
+                5 -> tab.text = "Drink"
+                6 -> tab.text = "Other Food"
             }
         }.attach()
     }
