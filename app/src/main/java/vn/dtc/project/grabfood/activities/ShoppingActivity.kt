@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import vn.dtc.project.grabfood.R
 import vn.dtc.project.grabfood.databinding.ActivityShoppingBinding
 
+@AndroidEntryPoint
 class ShoppingActivity : AppCompatActivity() {
 
     val binding by lazy {
