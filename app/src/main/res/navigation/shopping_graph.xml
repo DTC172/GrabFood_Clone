@@ -36,7 +36,11 @@
         android:id="@+id/profileFragment"
         android:name="vn.dtc.project.grabfood.fragments.shopping.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
     <fragment
         android:id="@+id/foodDetailsFragment"
         android:name="vn.dtc.project.grabfood.fragments.shopping.FoodDetailsFragment"
@@ -46,4 +50,9 @@
             android:name="food"
             app:argType="vn.dtc.project.grabfood.data.Food" />
     </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="vn.dtc.project.grabfood.fragments.shopping.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_address"/>
 </navigation>
