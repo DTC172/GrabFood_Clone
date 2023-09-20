@@ -54,5 +54,11 @@ class SpecialFoodAdapter: RecyclerView.Adapter<SpecialFoodAdapter.SpecialFoodVie
     override fun onBindViewHolder(holder: SpecialFoodViewHolder, position: Int) {
         val food = differ.currentList[position]
         holder.bind(food)
+
+        holder.itemView.setOnClickListener{
+            onClick?.invoke(food)
+        }
     }
+
+    var onClick:((Food) -> Unit)? = null
 }

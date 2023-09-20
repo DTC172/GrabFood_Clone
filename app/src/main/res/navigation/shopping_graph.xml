@@ -9,20 +9,41 @@
         android:id="@+id/homeFragment"
         android:name="vn.dtc.project.grabfood.fragments.shopping.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/favouriteFragment"
-        android:name="vn.dtc.project.grabfood.fragments.shopping.FavouriteFragment"
+        android:id="@+id/searchFragment"
+        android:name="vn.dtc.project.grabfood.fragments.shopping.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_favourite"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="vn.dtc.project.grabfood.fragments.shopping.CartFragment"
         android:label="CartFragment"
-        tools:layout="@layout/fragment_cart"/>
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="vn.dtc.project.grabfood.fragments.shopping.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/foodDetailsFragment"
+        android:name="vn.dtc.project.grabfood.fragments.shopping.FoodDetailsFragment"
+        android:label="FoodDetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="food"
+            app:argType="vn.dtc.project.grabfood.data.Food" />
+    </fragment>
 </navigation>

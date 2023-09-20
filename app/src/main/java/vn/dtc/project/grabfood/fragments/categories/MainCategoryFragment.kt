@@ -10,6 +10,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +21,7 @@ import vn.dtc.project.grabfood.adapters.BestFoodAdapter
 import vn.dtc.project.grabfood.adapters.SpecialFoodAdapter
 import vn.dtc.project.grabfood.databinding.FragmentMainCategoriesBinding
 import vn.dtc.project.grabfood.util.Resource
+import vn.dtc.project.grabfood.util.showBottomNavigationView
 import vn.dtc.project.grabfood.viewmodel.MainCategoryViewModel
 
 private val TAG = "MainCategoryFragment"
@@ -46,6 +48,20 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_categories) {
         setupSpecialFood()
         setupBestDealRv()
         setupBestFoodRv()
+
+        specialFoodAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("food", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment, b)
+        }
+        bestDealsAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("food", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment, b)
+        }
+        bestFoodAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("food", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment, b)
+        }
+
 
         lifecycleScope.launchWhenStarted {
             viewModel.specialFood.collectLatest {
@@ -148,6 +164,10 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_categories) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        showBottomNavigationView()
+    }
 
 }
