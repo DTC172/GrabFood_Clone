@@ -37,7 +37,7 @@ class DetailViewModel @Inject constructor(
                         if (food == cartFood){// Increase the quantity
                             val documentID = it.first().id
                             increaseQuantity(documentID, cartFood)
-                        } else{ //Add new product
+                        } else{ //Add new food
                             addNewFood(cartFood)
                         }
                     }
