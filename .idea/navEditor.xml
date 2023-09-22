@@ -112,8 +112,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="460" />
-                            <option name="y" value="427" />
+                            <option name="x" value="370" />
+                            <option name="y" value="419" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -124,8 +124,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="413" />
-                            <option name="y" value="-148" />
+                            <option name="x" value="128" />
+                            <option name="y" value="-12" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -178,25 +178,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="656" />
-                            <option name="y" value="97" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="searchFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="90" />
-                            <option name="y" value="7" />
+                            <option name="x" value="392" />
+                            <option name="y" value="-30" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_searchFragment_to_foodDetailsFragment">
+                            <entry key="action_profileFragment_to_addressFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

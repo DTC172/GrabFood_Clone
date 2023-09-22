@@ -4,10 +4,6 @@
         android:icon="@drawable/ic_home"
         android:id="@+id/homeFragment"/>
 
-    <item android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search"/>
-
     <item android:title="@string/cart"
         android:icon="@drawable/ic_cart"
         android:id="@+id/cartFragment"/>
