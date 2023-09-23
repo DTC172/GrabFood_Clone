@@ -1,6 +1,5 @@
 package vn.dtc.project.grabfood.fragments.shopping
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +22,7 @@ import vn.dtc.project.grabfood.util.VerticalItemDecoration
 import vn.dtc.project.grabfood.viewmodel.CartViewModel
 
 class CartFragment: Fragment(R.layout.fragment_cart) {
-    private lateinit var biding: FragmentCartBinding
+    private lateinit var binding: FragmentCartBinding
     private val cartAdapter by lazy { CartFoodAdapter() }
     private val viewModel by activityViewModels<CartViewModel>()
 
@@ -32,8 +31,8 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        biding = FragmentCartBinding.inflate(inflater)
-        return biding.root
+        binding = FragmentCartBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,10 +40,13 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
 
         setupCartRv()
 
+        var totalPrice = 0f
+
         lifecycleScope.launchWhenStarted {
             viewModel.foodPrice.collectLatest { price ->
                 price?.let {
-                    biding.tvTotalPrice.text = "$ $price"
+                    totalPrice = it
+                    binding.tvTotalPrice.text = "$ $price"
                 }
             }
         }
@@ -59,6 +61,11 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
         }
         cartAdapter.onMinusClick = {
             viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
+        }
+
+        binding.buttonCheckout.setOnClickListener{
+            val action = CartFragmentDirections.actionCartFragmentToBillingFragment(totalPrice = totalPrice, cartAdapter.differ.currentList.toTypedArray())
+            findNavController().navigate(action)
         }
         lifecycleScope.launchWhenStarted {
             viewModel.deleteDialog.collectLatest {
@@ -82,10 +89,10 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
             viewModel.cartFoodz.collectLatest {
                 when(it){
                     is Resource.Loading ->{
-                        biding.progressbarCart.visibility = View.VISIBLE
+                        binding.progressbarCart.visibility = View.VISIBLE
                     }
                     is Resource.Success ->{
-                        biding.progressbarCart.visibility = View.INVISIBLE
+                        binding.progressbarCart.visibility = View.INVISIBLE
                         if (it.data!!.isEmpty()){
                             showEmptyCart()
                             hideOtherView()
@@ -96,7 +103,7 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
                         }
                     }
                     is Resource.Error ->{
-                        biding.progressbarCart.visibility = View.INVISIBLE
+                        binding.progressbarCart.visibility = View.INVISIBLE
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                     else -> Unit
@@ -108,7 +115,7 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
 
 
     private fun showOtherView() {
-        biding.apply {
+        binding.apply {
             rvCart.visibility = View.VISIBLE
             totalBoxContainer.visibility = View.VISIBLE
             buttonCheckout.visibility = View.VISIBLE
@@ -116,7 +123,7 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
     }
 
     private fun hideOtherView() {
-        biding.apply {
+        binding.apply {
             rvCart.visibility = View.GONE
             totalBoxContainer.visibility = View.GONE
             buttonCheckout.visibility = View.GONE
@@ -124,19 +131,19 @@ class CartFragment: Fragment(R.layout.fragment_cart) {
     }
 
     private fun hideEmptyCart() {
-        biding.apply {
+        binding.apply {
             layoutCartEmpty.visibility = View.GONE
         }
     }
 
     private fun showEmptyCart() {
-        biding.apply {
+        binding.apply {
             layoutCartEmpty.visibility = View.VISIBLE
         }
     }
 
     private fun setupCartRv() {
-        biding.rvCart.apply {
+        binding.rvCart.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = cartAdapter
             addItemDecoration(VerticalItemDecoration())

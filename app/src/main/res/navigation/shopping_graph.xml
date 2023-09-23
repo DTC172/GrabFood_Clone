@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_cartFragment_to_foodDetailsFragment"
             app:destination="@id/foodDetailsFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -46,4 +49,20 @@
         android:name="vn.dtc.project.grabfood.fragments.shopping.AddressFragment"
         android:label="AddressFragment"
         tools:layout="@layout/fragment_address"/>
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="vn.dtc.project.grabfood.fragments.shopping.BillingFragment"
+        android:label="BillingFragment"
+        tools:layout="@layout/fragment_billing">
+        <action
+            android:id="@+id/action_billingFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <argument
+            android:name="food"
+            app:argType="vn.dtc.project.grabfood.data.CartFood[]" />
+    </fragment>
+
 </navigation>
