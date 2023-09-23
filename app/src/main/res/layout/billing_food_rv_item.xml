@@ -28,7 +28,7 @@
             app:layout_constraintBottom_toTopOf="@+id/topLine"
             app:layout_constraintStart_toStartOf="parent"
             android:scaleType="centerCrop"
-            android:src="@color/green"/>
+            android:src="@color/grab_green"/>
 
         <TextView
             android:id="@+id/tvFoodCartName"
