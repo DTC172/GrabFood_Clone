@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shopping_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/allOrdersFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -63,6 +63,22 @@
         <argument
             android:name="food"
             app:argType="vn.dtc.project.grabfood.data.CartFood[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/allOrdersFragment"
+        android:name="vn.dtc.project.grabfood.fragments.settings.AllOrdersFragment"
+        android:label="AllOrdersFragment" >
+        <action
+            android:id="@+id/action_allOrdersFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="vn.dtc.project.grabfood.fragments.settings.OrderDetailFragment"
+        android:label="OrderDetailFragment" >
+        <argument
+            android:name="order"
+            app:argType="vn.dtc.project.grabfood.data.Order.Order" />
     </fragment>
 
 </navigation>
