@@ -30,15 +30,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvSettings"
-                style="@style/BigTextViewThin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Profile"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarProfile"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:id="@+id/imageCloseProfile"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_close"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/black" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Profile"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@id/imageCloseProfile"
+                        app:layout_constraintStart_toStartOf="@id/imageCloseProfile"
+                        app:layout_constraintTop_toTopOf="@id/imageCloseProfile" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintProfile"
@@ -47,7 +81,7 @@
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvSettings">
+                app:layout_constraintTop_toBottomOf="@+id/toolbarProfile">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageUser"
@@ -95,14 +129,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tvOrders"
+                android:id="@+id/tvAccount"
                 style="@style/MediumTextViewThin"
                 android:textColor="@color/g_gray700"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Orders"
+                android:text="Account"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
 
@@ -113,7 +147,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvOrders"
+                app:layout_constraintTop_toBottomOf="@id/tvAccount"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/search_box_background">
@@ -121,16 +155,9 @@
                 <LinearLayout
                     android:id="@+id/linearAllOrders"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_all_orders"
-                        android:layout_gravity="center_vertical"
-                        app:tint="@color/white" />
-
+                    
                     <TextView
                         android:id="@+id/tvAllOrders"
                         style="@style/MediumTextViewThin"
@@ -154,18 +181,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/linearTrackOrder">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_search"
-                        android:layout_gravity="center_vertical"
-                        android:backgroundTint="@color/g_gray700"
-                        app:tint="@color/white" />
+                    android:id="@+id/linearFavaurite">
 
                     <TextView
                         android:id="@+id/tvTrackOrders"
@@ -173,7 +192,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Track Orders"
+                        android:text="Favourite"
                         android:textColor="@color/g_gray700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -190,17 +209,10 @@
                 <LinearLayout
                     android:id="@+id/linearBilling"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_billing"
-                        android:layout_gravity="center_vertical"
-                        android:backgroundTint="#FF9800"
-                        app:tint="@color/white" />
+                    
 
                     <TextView
                         android:id="@+id/tvBilling"
@@ -226,14 +238,14 @@
 
 
             <TextView
-                android:id="@+id/tvNotifications"
+                android:id="@+id/tvSetting"
                 style="@style/MediumTextViewThin"
                 android:textColor="@color/g_gray700"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Notifications"
+                android:text="Setting"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearOrders" />
 
@@ -243,7 +255,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvNotifications"
+                app:layout_constraintTop_toBottomOf="@id/tvSetting"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/search_box_background">
@@ -279,14 +291,14 @@
 
 
             <TextView
-                android:id="@+id/tvRegional"
+                android:id="@+id/tvLogout"
                 style="@style/MediumTextViewThin"
                 android:textColor="@color/g_gray700"
                 android:textStyle="normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Regional"
+                android:text="Logout"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
 
@@ -294,10 +306,10 @@
                 android:background="@drawable/search_box_background"
                 android:id="@+id/linear_regional"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvRegional"
+                app:layout_constraintTop_toBottomOf="@id/tvLogout"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp">
 
@@ -308,15 +320,6 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_logout"
-                        android:layout_gravity="center_vertical"
-                        android:backgroundTint="#ff5823"
-                        app:tint="@color/white"
-                        />
 
                     <TextView
                         android:id="@+id/logout"
