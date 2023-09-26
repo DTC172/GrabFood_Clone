@@ -63,7 +63,7 @@
             android:id="@+id/tvPaymentExplanation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="GrabFood Clone dose not support virtual payments. You can pay when you receive your order."
+            android:text="Currently Grabfood Clone only supports payment upon delivery."
             android:fontFamily="@font/sf_pro_display"
             app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods"
             app:layout_constraintStart_toStartOf="@id/guideline1"
@@ -94,8 +94,7 @@
             android:textSize="15sp"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@id/topLine"
-            app:drawableTint="@color/black"
-            app:drawableLeftCompat="@drawable/ic_location" />
+            app:drawableTint="@color/black" />
 
         <ImageView
             android:id="@+id/imageAddAddress"
@@ -147,6 +146,18 @@
             android:backgroundTint="@color/g_blue_gray200"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Order_Summary"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_thin"
+            android:textStyle="bold"
+            android:text="Order Summary"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/middleLine"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFood"
             android:layout_width="0dp"
@@ -155,7 +166,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/middleLine"
+            app:layout_constraintTop_toBottomOf="@+id/Order_Summary"
             tools:listitem="@layout/billing_food_rv_item"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
@@ -176,7 +187,7 @@
             android:id="@+id/totalBoxContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/total_box_background"
             app:layout_constraintTop_toBottomOf="@id/rvFood"
             app:layout_constraintStart_toStartOf="@id/guideline1"
@@ -225,7 +236,7 @@
             app:layout_constraintStart_toStartOf="@id/totalBoxContainer"
             app:layout_constraintEnd_toEndOf="@id/totalBoxContainer"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:text="Place Order"
             app:spinning_bar_color="@color/grab_green"/>

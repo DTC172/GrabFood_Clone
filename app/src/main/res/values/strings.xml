@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Grab Food</string>
+    <string name="app_name">GrabFood</string>
     <string name="introduction_title">Grab Food</string>
     <string name="introduction_description">Your favourite food delivered hot and fresh</string>
     <string name="Introduction_button">Start</string>

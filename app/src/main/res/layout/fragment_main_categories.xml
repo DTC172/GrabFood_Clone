@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollMainCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:id="@+id/nestedScrollMainCategory"
-        >
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="40dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,12 +21,23 @@
                 android:id="@+id/mainCategoryProgressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:indeterminateTint="@color/grab_green"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:indeterminateTint="@color/grab_green"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSpecial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_thin"
+                android:text="Special Food"
+                android:textSize="22sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@id/rvSpecialDishes" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSpecialDishes"
@@ -32,9 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSpecial" />
 
             <TextView
                 android:id="@+id/tvBestDeals"
@@ -45,9 +58,9 @@
                 android:text="Flash Deals"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvSpecialDishes"/>
+
+                app:layout_constraintStart_toStartOf="@id/rvSpecialDishes"
+                app:layout_constraintTop_toBottomOf="@id/rvSpecialDishes" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestDealsDishes"
@@ -69,36 +82,41 @@
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@id/rvSpecialDishes"
-                app:layout_constraintTop_toBottomOf="@id/rvBestDealsDishes"/>
+                app:layout_constraintTop_toBottomOf="@id/rvBestDealsDishes" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestDishes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvBestDishes"
                 android:layout_marginEnd="15dp"
                 android:overScrollMode="never"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBestDishes" />
 
             <ProgressBar
                 android:id="@+id/bestFoodProgressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:indeterminateTint="@color/grab_green"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="5dp"
-                android:indeterminateTint="@color/grab_green"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
