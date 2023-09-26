@@ -48,6 +48,9 @@ class ProfileFragment: Fragment() {
         binding.linearAllOrders.setOnClickListener{
             findNavController().navigate(R.id.action_profileFragment_to_allOrdersFragment)
         }
+        binding.linearFavaurite.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_favouriteFragment)
+        }
 
         binding.linearBilling.setOnClickListener{
             val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(0f,

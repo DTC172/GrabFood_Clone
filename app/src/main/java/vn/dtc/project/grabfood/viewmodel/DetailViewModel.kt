@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import vn.dtc.project.grabfood.data.CartFood
+import vn.dtc.project.grabfood.data.FavouriteFood
 import vn.dtc.project.grabfood.firebase.FirebaseCommon
 import vn.dtc.project.grabfood.util.Resource
 import javax.inject.Inject
@@ -17,11 +18,40 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val firestore: FirebaseFirestore,
-    val auth: FirebaseAuth,
+    private val auth: FirebaseAuth,
     private val firebaseCommon: FirebaseCommon
 ):ViewModel() {
     private val _addToCart = MutableStateFlow<Resource<CartFood>>(Resource.Unspecified())
     val addToCart = _addToCart.asStateFlow()
+
+    private val _addToFavourite = MutableStateFlow<Resource<FavouriteFood>>(Resource.Unspecified())
+    val addToFavourite = _addToFavourite.asStateFlow()
+
+    fun addUpdateFoodInFavourite(favouriteFood: FavouriteFood){
+        firestore.collection("user").document(auth.uid!!).collection("favourite")
+            .whereEqualTo("food.id", favouriteFood.food.id).get()
+            .addOnSuccessListener {
+                it.documents.let {
+                    if (it.isEmpty()){ // add new food to favourite
+                        addNewToFavourite(favouriteFood)
+                    }
+                }
+            }.addOnFailureListener {
+                viewModelScope.launch { _addToFavourite.emit(Resource.Error(it.message.toString())) }
+            }
+    }
+
+    private fun addNewToFavourite(favouriteFood: FavouriteFood) {
+        firebaseCommon.addFoodToFavourite(favouriteFood){addedFood, e->
+            viewModelScope.launch{
+                if (e == null){
+                    _addToFavourite.emit(Resource.Success(addedFood!!))
+                } else {
+                    _addToFavourite.emit(Resource.Error(e.message.toString()))
+                }
+            }
+        }
+    }
 
     fun addUpdateFoodInCart(cartFood: CartFood){
         viewModelScope.launch { _addToCart.emit(Resource.Loading()) }
@@ -68,4 +98,6 @@ class DetailViewModel @Inject constructor(
             }
         }
     }
+
+
 }

@@ -3,6 +3,7 @@ package vn.dtc.project.grabfood.firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import vn.dtc.project.grabfood.data.CartFood
+import vn.dtc.project.grabfood.data.FavouriteFood
 
 class FirebaseCommon(
     private val firestore: FirebaseFirestore,
@@ -10,6 +11,7 @@ class FirebaseCommon(
 ) {
 
     private val cartCollection = firestore.collection("user").document(auth.uid!!).collection("cart")
+    private val favouriteCollection = firestore.collection("user").document(auth.uid!!).collection("favourite")
 
     fun addFoodToCart(cartFood: CartFood, onResult: (CartFood?, Exception?) -> Unit){
        cartCollection.document().set(cartFood)
@@ -18,6 +20,16 @@ class FirebaseCommon(
            } .addOnFailureListener {
                onResult(null, it)
            }
+    }
+
+    //favourite
+    fun addFoodToFavourite(favouriteFood: FavouriteFood, onResult: (FavouriteFood?, Exception?) -> Unit){
+        favouriteCollection.document().set(favouriteFood)
+            .addOnSuccessListener {
+                onResult(favouriteFood, null)
+            }.addOnFailureListener {
+                onResult(null, it)
+            }
     }
 
     fun increaseQuantity(documentId: String, onResult: (String?, Exception?) -> Unit){

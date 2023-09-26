@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_profileFragment_to_userAccountFragment"
             app:destination="@id/userAccountFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailsFragment"
@@ -99,5 +102,13 @@
         android:id="@+id/userAccountFragment"
         android:name="vn.dtc.project.grabfood.fragments.profile.UserAccountFragment"
         android:label="UserAccountFragment" />
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="vn.dtc.project.grabfood.fragments.profile.FavouriteFragment"
+        android:label="FavouriteFragment" >
+        <action
+            android:id="@+id/action_favouriteFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+    </fragment>
 
 </navigation>

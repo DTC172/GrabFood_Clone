@@ -18,6 +18,7 @@ import vn.dtc.project.grabfood.R
 import vn.dtc.project.grabfood.activities.ShoppingActivity
 import vn.dtc.project.grabfood.adapters.ViewPager2Images
 import vn.dtc.project.grabfood.data.CartFood
+import vn.dtc.project.grabfood.data.FavouriteFood
 import vn.dtc.project.grabfood.databinding.FragmentDetailsBinding
 import vn.dtc.project.grabfood.util.Resource
 import vn.dtc.project.grabfood.util.hideBottomNavigationView
@@ -69,6 +70,28 @@ class FoodDetailsFragment: Fragment() {
         }
         binding.buttonAddToCart.setOnClickListener {
             viewModel.addUpdateFoodInCart(CartFood(food,1))
+        }
+        //favourite
+        binding.icFavouriteFoodButton.setOnClickListener{
+            viewModel.addUpdateFoodInFavourite(FavouriteFood(food))
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.addToFavourite.collectLatest {
+                when(it){
+                    is Resource.Loading ->{
+
+                    }
+                    is Resource.Success ->{
+                        binding.icFavouriteFoodButton.setBackgroundResource(R.drawable.ic_favourite2)
+                        Toast.makeText(requireContext(), "Food added to favourite", Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Error ->{
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else -> Unit
+                }
+            }
         }
 
         viewPagerAdapter.differ.submitList(food.images)
