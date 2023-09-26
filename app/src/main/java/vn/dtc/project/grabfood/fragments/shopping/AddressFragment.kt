@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import vn.dtc.project.grabfood.data.Address
@@ -20,6 +21,7 @@ import vn.dtc.project.grabfood.viewmodel.AddressViewModel
 class AddressFragment: Fragment() {
     private lateinit var binding: FragmentAddressBinding
     val viewModel by viewModels<AddressViewModel>()
+    val args by navArgs<AddressFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,15 +54,25 @@ class AddressFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddressBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         super.onViewCreated(view, savedInstanceState)
+
+        val address = args.address
+        if (address == null){
+            binding.buttonDelete.visibility = View.GONE
+        }else{
+            binding.apply {
+                edAddressTitle.setText(address.addressTitle)
+                edFullName.setText(address.fullName)
+                edPhone.setText(address.phone)
+            }
+        }
+
         binding.apply {
             buttonSave.setOnClickListener{
                 val addressTitle = edAddressTitle.text.toString()
@@ -69,6 +81,11 @@ class AddressFragment: Fragment() {
                 val address = Address(addressTitle, fullName, phone)
 
                 viewModel.addAddress(address)
+            }
+            buttonDelete.setOnClickListener {
+                edAddressTitle.text = null
+                edFullName.text = null
+                edPhone.text = null
             }
         }
 

@@ -118,6 +118,7 @@
                     android:id="@+id/arrow"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
+                    android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_arrow"
                     app:layout_constraintEnd_toEndOf="@id/constraintProfile"
                     app:layout_constraintTop_toTopOf="@id/tvUserName"
@@ -173,6 +174,7 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_arrow"
                         app:tint="@color/g_blue_gray200"
                         android:layout_gravity="center_vertical"/>
@@ -201,6 +203,7 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_arrow"
                         app:tint="@color/g_blue_gray200"
                         android:layout_gravity="center_vertical"/>
@@ -229,6 +232,7 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_arrow"
                         app:tint="@color/g_blue_gray200"
                         android:layout_gravity="center_vertical"/>
@@ -278,6 +282,7 @@
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchNotification"
+                        android:layout_marginEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -336,6 +341,7 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
+                        android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_arrow"
                         app:tint="@color/g_blue_gray200"
                         android:layout_gravity="center_vertical"/>
