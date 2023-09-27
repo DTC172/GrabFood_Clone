@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import vn.dtc.project.grabfood.R
 import vn.dtc.project.grabfood.adapters.HomeViewpagerAdapter
@@ -43,6 +44,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
 
         binding.viewpagerHome.isUserInputEnabled = false
+
+        binding.searchBar.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
 
         val viewPager2Adapter =
             HomeViewpagerAdapter(categoriesFragments, childFragmentManager, lifecycle)

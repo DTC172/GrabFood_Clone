@@ -19,4 +19,5 @@
     <color name="grab_green">#59BC6A</color>
     <color name="light_green">#88BA91</color>
     <color name="color">#F4DDB3</color>
+    <color name="gray_searchbar">#E2E2E2</color>
 </resources>

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_foodDetailsFragment"
             app:destination="@id/foodDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -108,6 +111,14 @@
         android:label="FavouriteFragment" >
         <action
             android:id="@+id/action_favouriteFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="vn.dtc.project.grabfood.fragments.shopping.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_foodDetailsFragment"
             app:destination="@id/foodDetailsFragment" />
     </fragment>
 

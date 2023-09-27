@@ -21,7 +21,7 @@
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:id="@+id/tv_deal_product_name"
+            android:id="@+id/tv_deal_food_name"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Food"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$2000"
-            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_food_name"
             app:layout_constraintStart_toEndOf="@id/tv_new_price"
             android:textColor="@color/g_gray700"
             android:textSize="14sp"
@@ -52,15 +52,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$1600"
-            app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
+            app:layout_constraintStart_toStartOf="@id/tv_deal_food_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_food_name"
 
             android:textColor="@color/black"
             android:textSize="14sp"
             android:fontFamily="@font/sf_pro_display"/>
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-            android:id="@+id/btn_see_product"
+            android:id="@+id/btn_see_food"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:background="@drawable/red_backgroud"
@@ -70,8 +70,8 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tv_deal_product_name"
-            app:layout_constraintTop_toTopOf="@id/tv_deal_product_name"
+            app:layout_constraintStart_toEndOf="@id/tv_deal_food_name"
+            app:layout_constraintTop_toTopOf="@id/tv_deal_food_name"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="20dp"

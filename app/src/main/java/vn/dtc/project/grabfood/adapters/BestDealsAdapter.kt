@@ -23,7 +23,7 @@ class BestDealsAdapter: RecyclerView.Adapter<BestDealsAdapter.BestDealsViewHolde
                     tvNewPrice.text = "$ ${String.format("%.2f",priceAfterOffer)}"
                 }
                 tvOldPrice.text = "$ ${food.price}"
-                tvDealProductName.text = food.name
+                tvDealFoodName.text = food.name
             }
         }
     }
